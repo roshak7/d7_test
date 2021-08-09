@@ -1,0 +1,15 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+
+{% block content %}
+<h1>{{ news_one.title | censor:'очень_плохое_слово' }}</h1>
+<p>{{ news_one.text | censor:'очень_плохое_слово' }}</p>
+<p>{{ news_one.creation_datetime | date:'d-m-Y h:i'}}</p>
+<p> Тип поста: {{ news_one.type }}</p>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %} News {% endblock title %}
+
+{% block content %}
+<h1>Удалить данную новость?</h1>
+<h2>{{ news_one.title | censor:'очень_плохое_слово'}}</h2>
+<p>{{ news_one.creation_datetime | date:'d.m.Y'}}</p>
+<p>{{ news_one.text | censor:'очень_плохое_слово' | truncatechars:50}}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить"></form>
+{% endblock content %}
